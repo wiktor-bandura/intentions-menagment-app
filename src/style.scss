@@ -1,0 +1,511 @@
+@import 'reset';
+@import url('https://fonts.googleapis.com/css?family=News+Cycle&display=swap');
+
+$primary-color: rgb(0, 140, 255);
+$light: rgb(255, 255, 255);
+$border-color: rgb(182, 182, 182);
+
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+      -#{$prefix}-#{$property}: $value;
+    }
+    #{$property}: $value;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+    background: {
+        image: url('images/background.jpg');
+        position: 45% 0;
+        repeat: no-repeat;
+        size: cover
+    };
+
+    img {
+        margin: 0 auto;
+    }
+
+    h3 {
+        text-transform: uppercase;
+        text-align: center;
+        padding: 15px;
+        font-size: 30px;
+        font-style: normal;
+    }
+
+    form {
+        text-align: center;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+
+        & > input {
+            display: block;
+            width: 200px;
+            height: 35px;
+            padding: 5px 20px;
+            margin: 20px auto;
+            text-align: center;
+            border: none;
+            outline: none;
+        }
+
+        input[type=text],
+        input[type=password] {
+            border-bottom: 2px solid black;
+            background: transparent;
+            letter-spacing: 2px;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            border-left: 1px solid $border-color;
+            border-top: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+        }
+
+        .submit-btn {
+            background: transparent;
+            color: $primary-color;
+            font-weight: 700;
+            font-size: 21px;
+            text-transform: uppercase;
+            border: 3px solid $primary-color;
+            border-radius: 5px;
+            padding: 8px 5px;
+            margin-top: 15px;
+            letter-spacing: 1px;
+            transition: all 0.1s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                background: $primary-color;
+                color: $light;
+            }
+        }
+    }
+}
+
+.close {
+    width: 35px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .close-cross {
+        width: 30px;
+        height: 3px;
+        background-color: black;
+        transform: rotate(45deg);
+        transition: background-color 0.2s ease;
+        z-index: -1;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: black;
+            top: 50%;
+            left: 50%;
+            transform: rotate(90deg);
+            transition: background-color 0.2s ease;
+        }
+    }
+
+    &:hover ~ .close-cross,
+    &:hover ~ .close-cross::before {
+        background-color: $primary-color;
+    }
+}
+
+.container {
+    width: 100vw;
+
+
+    & > header {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+
+        & > h1 {
+            display: block;
+            font-size: 45px;
+            padding: 50px;
+            text-align: center;
+            text-transform: uppercase;
+            color: $light;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+    }
+
+    & > main {
+
+        .description {
+            font-size: 1.2rem;
+            line-height: 140%;
+
+            & > p {
+                padding: 20px;
+            }
+        }
+
+        .form-box {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: space-evenly;
+            max-width: 350px;
+            padding: 20px;
+
+            hr {
+                width: 100%;
+            }
+        }
+
+    }
+
+    footer {
+        p {
+            background: black;
+            padding: 20px;
+            color: $light;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            left: 0;
+
+            & > a {
+                color: $light;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.description,
+.form-box,
+.login-box {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    margin: 5% auto;
+    background: $light;
+    padding: 20px 0;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+    background: {
+        image: url('images/background-clip-path.svg');
+        repeat: no-repeat;
+        size: initial;
+        position: bottom;
+    };
+    @include prefix(box-shadow, inset 0px 0px 13px -7px rgba(0,0,0,0.75), moz webkit);
+}
+
+.login-btn {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    padding: 5px 10px;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    color: $light;
+    background-color: black;
+    border: 0;
+}
+
+.login-box {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    right: 0;
+    padding: 40px;
+    margin: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    font-size: 25px;
+}
+
+.error,
+.login-error {
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > .spinner {
+        width: 20px;
+        height: 20px;
+        border: 6px solid #303030;
+        border-left: 6px solid #FFFFFF;
+        border-radius: 50%;
+        animation: spin 1s infinite;
+    }
+}
+
+.intentions {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-200%);
+    transition: transform 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+
+        & > .close {
+            width: 40px;
+            padding: {
+                right: 25px;
+            }
+        }
+
+        & > p {
+            padding-right: 50px;
+        }
+
+        & > div {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            & > .download {
+                box-sizing: border-box;
+                width: 100px;
+                height: 40px;
+                padding: 5px 10px;
+                margin: 5px;
+                color: $light;
+                background-color: black;
+                border: 0;
+                cursor: pointer;
+            }
+
+            & > .delete-form {
+                height: 40px;
+                padding: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                input,
+                button {
+                    margin: 0;
+                    padding: 0;
+                    width: 50px;
+                    height: 40px;
+                    color: $light;
+                    border: 1px solid black;
+                    background-color: $border-color;
+                    box-sizing: border-box;
+                }
+
+                button {
+                    background-color: black;
+                    border: 0;
+                }
+
+            }
+
+
+            & > p {
+                padding: 10px;
+            }
+
+
+        }
+
+
+
+        .message {
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
+            padding: 20px;
+        }
+
+    }
+    .intentions__list {
+        width: 90%;
+        height: 80%;
+        margin: 4% auto;
+        margin-top: 150px;
+        display: grid;
+        padding: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 3%;
+        overflow: scroll;
+
+        .intention {
+            position: relative;
+            background: #f5fcfc;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 1px 8px 12px 2px rgba(80, 78, 78, 0.8);
+            margin: 30px 0;
+
+            & > span {
+                width: 100%;
+                min-height: 45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $primary-color;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                font-size: 20px;
+            }
+
+            & > p {
+                box-sizing: border-box;
+                width: 100%;
+                height: 80%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                font-size: 18px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    main {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        .form-box {
+            max-width: 400px;
+        }
+
+        .description {
+            width: 400px;
+        }
+
+
+    }
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+
+    .login-box {
+        top: 20%;
+        right: 0;
+        max-width: 350px;
+        max-height: 500px;
+        margin: 0;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 900px) {
+    .description {
+        width: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        max-width: 100vw;
+        max-height: 100vh;
+        background-position: 20%;
+
+        .background {
+            background-size: contain;
+        }
+
+        h1 {
+            margin: 30px;
+            font-size: 4.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        .container {
+            align-items: unset;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-around;
+
+            .description {
+                margin-top: 10%;
+                width: 40%;
+                font-size: 1.4rem;
+                padding: 20px;
+            }
+
+
+        }
+    }
+}
+
+.visible {
+    transform: translateX(0);
+}

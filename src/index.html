@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Internetowa Skrzynka intencji. Tutaj każdy może poprosić o modlitwę! Parafia Krzyża Brzeg">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>Internetowa Skrzynka Intencji</title>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <header>
+            <h1>Internetowa Skrzynka intencji</h1>
+        </header>
+        <main>
+            <div class="description">
+                <h3>Tutaj możesz poprosić o modlitwę</h3>
+                <p>
+                    W Ewangelii znajduje się wiele scen, gdzie rodzice, przyjaciele, czy inni ludzie przyprowadzają do Jezusa osoby potrzebujące pomocy
+                    (por. Mk 1,29-31; 2,1-12; 5,35-43; 7,24-30; 8,22-26; 9,14-29). Wtedy Chrystus ze względu na ich wiarę dokonuje uzdrowień.
+                    Dlatego <i>Brzeska Wspólnota Krwi Chrystusa</i> proponuje wszystkim, którzy WIERZĄ w moc modlitwy wstawienniczej, możliwość skorzystania z internetowej skrzynki intencji. Wszelkie dziękczynienia, prośby, czy przebłagania wysłane za pomocą formularza znajdującego się z lewej strony, będą obejmowane modlitwą przez członków wspólnoty w każdy czwartek o godz. 16.00 w kaplicy św. Jadwigi w Brzegu. Zapraszamy wszystkich potrzebujących duchowego wsparcia!
+                </p>
+            </div>
+            <div class="form-box">
+                <img src="favicon.png" alt="Krzyż" height="60">
+                <h3>Wyślij intencję</h3>
+                <form class="message-form">
+                    <input type="text" id="userName" placeholder="IMIĘ" autocomplete="off">
+                    <input type="text" id="messageText" placeholder="INTENCJA" autocomplete="off">
+                    <div class="g-recaptcha" data-sitekey="6LccgssUAAAAAFobeRlI8AgPE4aEx9DNiwwTj5fR" data-callback="verifyCaptcha"></div>
+                    <div class="error"></div>
+                    <button class="submit-btn" type="submit">Wyślij intencje</button>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <p>Copyright &copy 2019 by Parafia Podwyższenia Krzyża Świętego w Brzegu. All rights reserved. Mailbox icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+        </footer>
+    </div>
+
+    <button class="login-btn">
+        Zaloguj się
+    </button>
+
+    <div class="login-box">
+        <div class="close">
+            <div class="close-cross"></div>
+        </div>
+        <h3>Sprawdzanie intencji</h3>
+        <form class="login-form">
+
+                <input type="text" id="login" autocomplete="off" placeholder="Login">
+
+                <input type="password" id="password" placeholder="Hasło">
+
+            <div class="login-error"></div>
+            <button class="submit-btn" type="submit">Zaloguj się</button>
+        </form>
+    </div>
+
+    <div class="intentions">
+        <div class="intentions__header">
+            <div class="close">
+                <div class="close-cross"></div>
+            </div>
+            <p>Aby usunąć przestarzałe intencje należy wpisać liczbę dni. Intencje starsze niż podana liczba zostaną usunięte.</p>
+            <div>
+                <button class="download">Ładuję plik...</button>
+                <form class="delete-form">
+                    <input type="number" id="inputDays"> <button type="submit">Usuń</button>
+                </form>
+            </div>
+            <span class="message"></span>
+        </div>
+        <hr>
+        <div class="intentions__list"></div>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=explict" async defer></script>
+</body>
+</html>
