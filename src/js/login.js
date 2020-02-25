@@ -68,12 +68,14 @@ deleteForm.addEventListener('submit', (e) => {
             setTimeout(() => message.textContent = ``, 3000);
         } else {
 
+            authorsAndContents = '';
+
             db.collection('intentions')
                 .orderBy('created_at','desc')
                 .get()
                 .then(querySnapshot => {
                     querySnapshot.forEach((doc) => {
-                        const { author, content, created_at } = doc.data();
+                        const { created_at } = doc.data();
                         const timeDifference = (parseInt(now) - parseInt(created_at.toDate().getTime())) / 86400000;
 
                         if(timeDifference > days) {
@@ -84,26 +86,18 @@ deleteForm.addEventListener('submit', (e) => {
                                     setTimeout(() => message.textContent = ``, 3000);
                                 });
 
-                        } else {
-
-                            const intentionTemplate = `
-                            <div class="intention">
-                                <span>Od: ${author}</span>
-                                <p>"${content}"</p>
-                                <p>${formatDate(created_at.toDate().getTime())}</p>
-                            </div>
-                            `;
-
-                            authorsAndContents+=`Od: ${author}, Treść: ${content}`;
-
-                            intentionsList.innerHTML += intentionTemplate;
                         }
+
                     })
                 });
+
+                getData();
         }
 });
 
 const getData = () => {
+
+    authorsAndContents = '';
 
     db.collection('intentions')
                         .orderBy('created_at','desc')
@@ -127,24 +121,8 @@ const getData = () => {
                             });
 
                         });
-        downloadButton.addEventListener('click', () => {
 
-            const blob = new Blob([authorsAndContents], {
-                type: 'text/plain'
-            });
-
-            const now = formatDate(new Date().getTime());
-
-            const URL = window.URL.createObjectURL(blob);
-
-            const aElement = document.createElement('a');
-            aElement.style = 'display: none';
-            aElement.href = URL;
-            aElement.download = `intencje_${now}.txt`;
-            aElement.click();
-            window.URL.revokeObjectURL(URL);
-        });
-
+        downloadButton.addEventListener('click', createDocument);
         downloadButton.textContent = 'Pobierz plik';
 }
 
@@ -158,12 +136,29 @@ const formatDate = (timestamp) => {
     return `${day} ${months[monthIndex]} ${year}r.`;
 }
 
+const createDocument = () => {
+
+    const blob = new Blob([authorsAndContents], {
+        type: 'text/plain'
+    });
+
+    const now = formatDate(new Date().getTime());
+    const URL = window.URL.createObjectURL(blob);
+    let aElement = document.createElement('a');
+    aElement.style = 'display: none';
+    aElement.href = URL;
+    aElement.download = `intencje_${now}.txt`;
+    aElement.click();
+    window.URL.revokeObjectURL(URL);
+
+}
+
 
 
 /* Logging out */
 
 intenstionsClose.addEventListener('click', () => {
     intenstionsClose.parentElement.parentElement.classList.remove('visible');
-
+    downloadButton.removeEventListener('click', createDocument);
     firebase.auth().signOut();
 });
