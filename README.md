@@ -1,24 +1,24 @@
-#JavaScript app to menage intentions
+# JavaScript app to menage intentions
 
-##Table of contents
+## Table of contents
 
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [How it looks](#how-it-looks)
 
-##General info
+## General info
 
 I made this application with pure JavaScript on Webpack. I tried to help my friend to manage messages from members of his non-profit organization. The most important thing to me during creating this app was learning and i have to say that I've learned a lot of new things.
 
-##Technologies:
+## Technologies:
 
 * [JavaScript in ES6+ standard]('https://github.com/search?q=javascript)
 * [SCSS]('https://sass-lang.com/)
 * [Webpack]('https://github.com/webpack/webpack')
 * [Google Firebase]('https://firebase.google.com/)
 
-##Setup
+## Setup
 
 To run this project install it locally using 'npm install' command. You also have to get you're own Google Firebase account to get 'firebase.config.js' file and configure Firestore and Authentification ;)
 
@@ -39,7 +39,7 @@ I put below some helpful commands to work with project.
     npm run serv
 ```
 
-##How it looks
+## How it looks
 
 ![App](http://www.brzegkrzyz.archidiecezja.wroc.pl/skrzynka-intencji/Capture.PNG)
 
