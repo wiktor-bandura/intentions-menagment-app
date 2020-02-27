@@ -20,7 +20,7 @@ I made this application with pure JavaScript on Webpack. I tried to help my frie
 
 ## Setup
 
-To run this project install it locally using 'npm install' command. You also have to get you're own Google Firebase account to get 'firebase.config.js' file and configure Firestore and Authentification ;)
+To run this project install it locally using 'npm install' command. You also have to get your own Google Firebase account to get 'firebase.config.js' file and configure Firestore and Authentification ;)
 
 I put below some helpful commands to work with project.
 
