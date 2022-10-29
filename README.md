@@ -22,12 +22,15 @@ I made this application with pure JavaScript on Webpack. I tried to help my frie
 
 To run this project install it locally using 'npm install' command. You also have to get your own Google Firebase account to get 'firebase.config.js' file and configure Firestore and Authentification ;)
 
-I put below some helpful commands to work with project.
+I bet below some helpful commands to work with project.
 
-1. install - install all dependencies.
-1. build - builds app in development mode.
-1. prod - builds app in production mode.
-1. serv - runs development server
+
+| Command        | Description  |
+| ------------- |:-------------:|
+| npm install      | Installs all dependencies |
+| npm run build     | Builds app in development mode |
+| npm run prod | Builds app in production mod  |
+| npm run serv  | Runs development server |
 
 ```bash
     npm install
@@ -41,5 +44,5 @@ I put below some helpful commands to work with project.
 
 ## How it looks
 
-![App](http://www.archbrzegkrzyz.archidiecezja.wroc.pl/skrzynka-intencji/Capture.PNG)
+![App](https://www.archbrzegkrzyz.archidiecezja.wroc.pl/skrzynka-intencji/Capture.PNG)
 
