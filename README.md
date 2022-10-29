@@ -41,5 +41,5 @@ I put below some helpful commands to work with project.
 
 ## How it looks
 
-![App](http://www.brzegkrzyz.archidiecezja.wroc.pl/skrzynka-intencji/Capture.PNG)
+![App](http://www.archbrzegkrzyz.archidiecezja.wroc.pl/skrzynka-intencji/Capture.PNG)
 
